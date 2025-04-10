@@ -1,0 +1,28 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Goblin Gastronomy"
+run/main_scene="uid://od12lyvhvsdq"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalVar="*res://Scripts/global_var.gd"
+
+[dotnet]
+
+project/assembly_name="Goblin Gastronomy"
+
+[global_group]
+
+dragItem="For items to be dragged to the bowl"

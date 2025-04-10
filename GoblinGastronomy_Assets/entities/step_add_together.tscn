@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://clpv848tcer0d"]
+
+[ext_resource type="Script" uid="uid://ctc4qu8cy1yq6" path="res://Scripts/step_addBowl.gd" id="1_rtahq"]
+[ext_resource type="Texture2D" uid="uid://cxso6xsaebkvc" path="res://assets/CupBase.png" id="1_wldmv"]
+[ext_resource type="Script" uid="uid://dedk8f38qxpj7" path="res://Scripts/itemSpawn.gd" id="3_ds1rq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rtahq"]
+radius = 32.86
+height = 126.0
+
+[node name="step_addTogether" type="Node2D"]
+script = ExtResource("1_rtahq")
+
+[node name="bowlSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_wldmv")
+
+[node name="detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect"]
+position = Vector2(2, -21)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rtahq")
+
+[node name="ingred" type="Node2D" parent="."]
+
+[node name="place1" type="Marker2D" parent="ingred"]
+position = Vector2(-300, -75)
+script = ExtResource("3_ds1rq")
+
+[node name="place2" type="Marker2D" parent="ingred"]
+position = Vector2(-300, 75)
+script = ExtResource("3_ds1rq")
+
+[node name="place3" type="Marker2D" parent="ingred"]
+position = Vector2(-150, -75)
+script = ExtResource("3_ds1rq")
+
+[node name="place4" type="Marker2D" parent="ingred"]
+position = Vector2(-150, 75)
+script = ExtResource("3_ds1rq")
+
+[node name="place5" type="Marker2D" parent="ingred"]
+position = Vector2(150, -75)
+script = ExtResource("3_ds1rq")
+
+[node name="place6" type="Marker2D" parent="ingred"]
+position = Vector2(150, 75)
+script = ExtResource("3_ds1rq")
+
+[node name="place7" type="Marker2D" parent="ingred"]
+position = Vector2(300, -75)
+script = ExtResource("3_ds1rq")
+
+[node name="place8" type="Marker2D" parent="ingred"]
+position = Vector2(300, 75)
+script = ExtResource("3_ds1rq")
+
+[connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]

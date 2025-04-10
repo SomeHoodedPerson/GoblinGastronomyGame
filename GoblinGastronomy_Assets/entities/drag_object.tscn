@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxyo8yoqyxmc6"]
+
+[ext_resource type="Texture2D" uid="uid://crp6pcdnibe2o" path="res://icon.svg" id="1_p4ix3"]
+[ext_resource type="Texture2D" uid="uid://cxso6xsaebkvc" path="res://assets/CupBase.png" id="2_byeys"]
+[ext_resource type="Script" uid="uid://k7cx4t0x20ll" path="res://Scripts/dragObject.gd" id="2_kyarv"]
+[ext_resource type="Texture2D" uid="uid://dlt3fv045l4xp" path="res://assets/alarm_broke.png" id="2_x5eh0"]
+[ext_resource type="Texture2D" uid="uid://ldfp3qkawifv" path="res://assets/CupChiliPep.png" id="3_x5eh0"]
+[ext_resource type="Texture2D" uid="uid://db618lr3i3bjs" path="res://assets/CupCrouton.png" id="4_4hwss"]
+[ext_resource type="Texture2D" uid="uid://ckbg7c3euxnmx" path="res://assets/CupLemonVin.png" id="5_0thbq"]
+[ext_resource type="Texture2D" uid="uid://brpqfyt1iyehj" path="res://assets/CupNettles.png" id="6_xngb8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5jl0"]
+radius = 26.0768
+
+[node name="dragObject" type="RigidBody2D" groups=["dragItem"]]
+gravity_scale = 0.0
+script = ExtResource("2_kyarv")
+images = Array[Texture2D]([ExtResource("2_x5eh0"), ExtResource("2_byeys"), ExtResource("3_x5eh0"), ExtResource("4_4hwss"), ExtResource("5_0thbq"), ExtResource("6_xngb8")])
+
+[node name="objSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_p4ix3")
+
+[node name="obj_touch" type="Button" parent="objSprite"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="collShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o5jl0")
+
+[connection signal="button_down" from="objSprite/obj_touch" to="." method="_on_obj_touch_button_down"]
+[connection signal="button_up" from="objSprite/obj_touch" to="." method="_on_obj_touch_button_up"]

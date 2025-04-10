@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp7m752g3qy5g"]
+
+[ext_resource type="Script" uid="uid://dyer5cmekq872" path="res://Scripts/button_exit.gd" id="1_fn0x4"]
+
+[node name="buttonExit" type="Button"]
+text = "Exit"
+script = ExtResource("1_fn0x4")

@@ -1,0 +1,248 @@
+[gd_scene load_steps=21 format=3 uid="uid://c1ow038q2vxjh"]
+
+[ext_resource type="Script" uid="uid://c7vi5n2tiiujo" path="res://Scripts/kitchen_manager.gd" id="1_01kas"]
+[ext_resource type="Theme" uid="uid://kkeu01cr24x0" path="res://assets/GUI/theme_base.tres" id="2_5pt2b"]
+[ext_resource type="PackedScene" uid="uid://clpv848tcer0d" path="res://entities/step_add_together.tscn" id="2_o5jl0"]
+[ext_resource type="Texture2D" uid="uid://dhgne0iwyy5be" path="res://assets/alarm_ok.png" id="4_5k4el"]
+[ext_resource type="Script" uid="uid://drb07v0vywymx" path="res://Scripts/timer_system.gd" id="4_411og"]
+[ext_resource type="PackedScene" uid="uid://lsyckqokpn6t" path="res://entities/step_chop_board.tscn" id="4_cb7he"]
+[ext_resource type="Script" uid="uid://6grunog1j6v7" path="res://Scripts/panelGrade.gd" id="5_v0pvy"]
+[ext_resource type="Texture2D" uid="uid://bnh24u5dor7ck" path="res://assets/grades/grade_g1.png" id="6_4uuqj"]
+[ext_resource type="Texture2D" uid="uid://b6trhqoaif3fa" path="res://assets/GUI/GUI_bar2.png" id="6_58yuc"]
+[ext_resource type="PackedScene" uid="uid://c7lnjgcq4yior" path="res://entities/User Interface/button_menu.tscn" id="6_xa10v"]
+[ext_resource type="Texture2D" uid="uid://ce14vuwi47ky5" path="res://assets/grades/grade_g2.png" id="7_3pwhk"]
+[ext_resource type="Texture2D" uid="uid://dyp2i3okiut24" path="res://assets/GUI/GUI_bar0.png" id="7_ony78"]
+[ext_resource type="Texture2D" uid="uid://crgesaa6w2adn" path="res://assets/GUI/GUI_bar1.png" id="8_2yirv"]
+[ext_resource type="Texture2D" uid="uid://crp5nmo3u77rt" path="res://assets/grades/grade_g3.png" id="8_7d7wm"]
+[ext_resource type="Texture2D" uid="uid://xhlik2jwbmou" path="res://assets/grades/grade_g4.png" id="9_5pt2b"]
+[ext_resource type="Texture2D" uid="uid://relv8oudnrgf" path="res://assets/grades/grade_g5.png" id="10_oyjgm"]
+[ext_resource type="Script" uid="uid://4vk46n8dspxc" path="res://scenes/panel_Win.gd" id="11_4uuqj"]
+[ext_resource type="Texture2D" uid="uid://cjok0n2tp2xn1" path="res://assets/Dish_img/dish_Trash.png" id="12_7d7wm"]
+[ext_resource type="Texture2D" uid="uid://csia4ks46i8is" path="res://assets/Dish_img/dish_painSalad.png" id="13_5pt2b"]
+[ext_resource type="Texture2D" uid="uid://c733b55j5y6lb" path="res://assets/gg_table.png" id="20_ony78"]
+
+[node name="kitchen_Test" type="Node"]
+script = ExtResource("1_01kas")
+
+[node name="background" type="TextureRect" parent="."]
+z_index = -4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -40.0
+offset_right = 62.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("20_ony78")
+
+[node name="instLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -145.0
+offset_top = 100.0
+offset_right = 145.0
+offset_bottom = 155.0
+grow_horizontal = 2
+theme = ExtResource("2_5pt2b")
+
+[node name="steps" type="Node" parent="."]
+
+[node name="step_chopBoard" parent="steps" instance=ExtResource("4_cb7he")]
+position = Vector2(576, 325)
+
+[node name="step_addTogether" parent="steps" instance=ExtResource("2_o5jl0")]
+position = Vector2(1562, 148)
+
+[node name="TimerSys" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 317.0
+offset_bottom = 129.0
+theme = ExtResource("2_5pt2b")
+script = ExtResource("4_411og")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="TimerSys"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 48.0
+offset_right = 331.0
+offset_bottom = 128.0
+min_value = 15.0
+max_value = 30.0
+value = 30.0
+texture_under = ExtResource("6_58yuc")
+texture_over = ExtResource("7_ony78")
+texture_progress = ExtResource("8_2yirv")
+texture_progress_offset = Vector2(30, 0)
+
+[node name="Timer" type="Timer" parent="TimerSys"]
+
+[node name="CC" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5pt2b")
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="CC"]
+layout_mode = 2
+
+[node name="center" type="Marker2D" parent="CC/Control"]
+
+[node name="Side" type="Marker2D" parent="CC/Control"]
+position = Vector2(1000, 0)
+
+[node name="Camera2D" type="Camera2D" parent="CC/Control"]
+metadata/_edit_lock_ = true
+
+[node name="gradePanel" type="Panel" parent="CC/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = -156.5
+offset_right = 198.5
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_v0pvy")
+images = Array[Texture2D]([ExtResource("6_4uuqj"), ExtResource("7_3pwhk"), ExtResource("8_7d7wm"), ExtResource("9_5pt2b"), ExtResource("10_oyjgm")])
+words = Array[String](["Gob-tastic!", "Great!", "Good.", "Garbage", "Gobshite"])
+
+[node name="gradeText" type="Label" parent="CC/Control/gradePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.5
+offset_top = 40.0
+offset_right = 88.5
+offset_bottom = 80.0
+grow_horizontal = 2
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CC/Control/gradePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gradeIcon" type="TextureRect" parent="CC/Control/gradePanel/Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7d7wm")
+expand_mode = 1
+
+[node name="buttonPro" type="Button" parent="CC/Control/gradePanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -35.0
+offset_right = 71.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Next Step>>>"
+
+[node name="winPanel" type="Panel" parent="CC/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -136.0
+offset_right = 215.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_4uuqj")
+images = Array[Texture2D]([ExtResource("12_7d7wm"), ExtResource("13_5pt2b")])
+gradeImg = Array[Texture2D]([ExtResource("6_4uuqj"), ExtResource("7_3pwhk"), ExtResource("8_7d7wm"), ExtResource("9_5pt2b"), ExtResource("10_oyjgm")])
+
+[node name="gradeIcon" type="TextureRect" parent="CC/Control/winPanel"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = 56.0
+offset_top = 45.0
+offset_right = 156.0
+offset_bottom = 145.0
+texture = ExtResource("8_7d7wm")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CC/Control/winPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5k4el")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CC/Control/winPanel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -97.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "You Cooked Okay!"
+horizontal_alignment = 1
+
+[node name="buttonMainMenu" parent="CC/Control/winPanel" instance=ExtResource("6_xa10v")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -39.0
+offset_right = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="timeout" from="TimerSys/Timer" to="TimerSys" method="_on_timer_timeout"]
+[connection signal="pressed" from="CC/Control/gradePanel/buttonPro" to="." method="_on_pro_pressed"]
